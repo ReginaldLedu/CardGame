@@ -64,7 +64,9 @@ h1 {
   gap: 24px;
 }
 
-.level {
+.easy,
+.moderate,
+.challenging {
   width: 96px;
   height: 98px;
   background-color: white;
@@ -110,4 +112,24 @@ h1 {
   font-family: StratosskyengReg;
   src: url("statosskyeng-v1.001/Desktop fonts/stratosskyeng-regular.otf");
   font-weight: 400;
+}
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 700px;
+  gap: 15px;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.level__chosen {
+  -webkit-box-shadow: 0 0 15px black;
+          box-shadow: 0 0 15px black;
 }
