@@ -1,9 +1,11 @@
+import "./style.css";
+
 const levelsCont = document.querySelector(".levels");
 const globalGameState = {};
 const container = document.querySelector(".container");
 let cardsCounter = 0;
 
-levels = {
+const levels = {
     easy: 6,
     moderate: 12,
     challenging: 18,
@@ -124,10 +126,10 @@ function renderCardsScreen() {
             indexRanks = Math.round(Math.random() * 10);
         } while (indexRanks > ranks.length - 1);
 
-        cards[i].src = `src/img/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
+        cards[i].src = `static/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
         cards[
             i + cards.length / 2
-        ].src = `src/img/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
+        ].src = `static/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
         k++;
         globalGameState[k + 0] = `${ranks[indexRanks]}.${suits[indexSuits]}`;
         globalGameState[
@@ -193,7 +195,7 @@ function hideCards() {
         tag: "img",
         cls: "cover",
         attrs: {
-            src: "src/img/cover.png",
+            src: "static/cover.png",
         },
     };
     cardsItems.forEach((item) => item.appendChild(templateEngine(coverObject)));
