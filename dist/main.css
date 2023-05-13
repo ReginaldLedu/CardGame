@@ -1,0 +1,263 @@
+/*!*************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./style.css ***!
+  \*************************************************************/
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: -5px;
+  margin: -5px;
+  background-color: rgb(0, 73, 128);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body {
+  background-color: rgb(0, 73, 128);
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: -5px;
+  margin: -5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+h1 {
+  font-family: "StratosskyengReg";
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgb(0, 73, 128);
+}
+
+.chooseLevel {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 459px;
+  width: 480px;
+  background: rgb(194, 245, 255);
+  border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chooseLevel__title {
+  width: 208px;
+}
+
+.levels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: rgb(0, 73, 128);
+  gap: 24px;
+}
+
+.easy,
+.moderate,
+.challenging {
+  width: 96px;
+  height: 98px;
+  background-color: white;
+  font-family: StratosSkyeng;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 72px;
+  letter-spacing: 0px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 10px;
+  font-family: "StratosskyengReg";
+}
+
+.chooseLevel__start {
+  background-color: rgb(122, 193, 0);
+  height: 50.0031738281px;
+  width: 246px;
+  margin-top: 67px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: white;
+  font-family: "StratosskyengReg";
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Stratosskyeng;
+  src: url(033889acbff18595434b.otf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: StratosskyengReg;
+  src: url(8765b4fa6f0337532589.otf);
+  font-weight: 400;
+}
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 700px;
+  gap: 15px;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.level__chosen {
+  -webkit-box-shadow: 0 0 15px black;
+          box-shadow: 0 0 15px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.level__chosen {
+  -webkit-box-shadow: 0 0 15px black;
+          box-shadow: 0 0 15px black;
+}
+
+.hidden {
+  display: none;
+}
+
+.mix {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 46px;
+}
+
+.header {
+  padding-top: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+
+.startButtonCont {
+  margin-top: 45px;
+  height: 48px;
+  width: 246px;
+  background: rgb(122, 193, 0);
+  border-radius: 12px;
+  border: none;
+}
+
+.startButton {
+  height: 48px;
+  width: 246px;
+  background: rgb(122, 193, 0);
+  border-radius: 12px;
+  font-family: "StratosskyengReg";
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+  border: none;
+}
+
+.text {
+  font-family: "StratosskyengReg";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: white;
+}
+
+.figures {
+  font-family: "StratosskyengReg";
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 72px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: white;
+}
+
+.time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 72px;
+  width: 155px;
+}
+
+/*# sourceMappingURL=main.css.map*/
