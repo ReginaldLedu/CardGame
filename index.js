@@ -30,6 +30,7 @@ const cardCont = {
 const startButton = document.querySelector(".chooseLevel__start");
 
 function chooseLevel(event) {
+    console.log(globalGameState.difficulty);
     const items = levelsCont.children;
     console.log(items);
     for (let i = 0; i < items.length; i++) {
@@ -86,86 +87,99 @@ function templateEngine(block) {
 }
 
 function secondScreen() {
-    let cardQuantity = 0;
-    container.remove();
     if (globalGameState.difficulty in levels) {
-        console.log(globalGameState.difficulty);
-    }
-    switch (globalGameState.difficulty) {
-        case "easy":
-            cardQuantity = levels.easy;
-            break;
-        case "moderate":
-            cardQuantity = levels.moderate;
-            break;
-        case "challenging":
-            cardQuantity = levels.challenging;
-            break;
-    }
-    document.body.appendChild(templateEngine(cardCont));
-    const cardContainer = document.querySelector(".cards");
-    for (let i = 0; i < cardQuantity; i++) {
-        cardContainer.appendChild(templateEngine(card));
+        let cardQuantity = 0;
+        container.remove();
+        if (globalGameState.difficulty in levels) {
+            console.log(globalGameState.difficulty);
+            switch (globalGameState.difficulty) {
+                case "easy":
+                    cardQuantity = levels.easy;
+                    break;
+                case "moderate":
+                    cardQuantity = levels.moderate;
+                    break;
+                case "challenging":
+                    cardQuantity = levels.challenging;
+                    break;
+            }
+            document.body.appendChild(templateEngine(cardCont));
+            const cardContainer = document.querySelector(".cards");
+            for (let i = 0; i < cardQuantity; i++) {
+                cardContainer.appendChild(templateEngine(card));
+            }
+        } else {
+            alert("Выберите уровень сложности игры.");
+        }
+    } else {
+        alert("Выберите уровень сложности игры");
     }
 }
 
 function renderCardsScreen() {
-    const suits = ["diamonds", "hearts", "clubs", "spades"];
-    const ranks = ["6", "7", "8", "9", "10", "Q", "K", "J", "A"];
-    let indexSuits = 10;
-    let indexRanks = 10;
-    let k = 0;
-    let cards = document.querySelectorAll(".card__pic");
-    console.log(cards);
+    if (globalGameState.difficulty in levels) {
+        const suits = ["diamonds", "hearts", "clubs", "spades"];
+        const ranks = ["6", "7", "8", "9", "10", "Q", "K", "J", "A"];
+        let indexSuits = 10;
+        let indexRanks = 10;
+        let k = 0;
+        let cards = document.querySelectorAll(".card__pic");
+        console.log(cards);
 
-    for (let i = 0; i < cards.length / 2; i++) {
-        do {
-            indexSuits = Math.round(Math.random() * 10);
-        } while (indexSuits > suits.length - 1);
-        do {
-            indexRanks = Math.round(Math.random() * 10);
-        } while (indexRanks > ranks.length - 1);
+        for (let i = 0; i < cards.length / 2; i++) {
+            do {
+                indexSuits = Math.round(Math.random() * 10);
+            } while (indexSuits > suits.length - 1);
+            do {
+                indexRanks = Math.round(Math.random() * 10);
+            } while (indexRanks > ranks.length - 1);
 
-        cards[i].src = `static/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
-        cards[
-            i + cards.length / 2
-        ].src = `static/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
-        k++;
-        globalGameState[k + 0] = `${ranks[indexRanks]}.${suits[indexSuits]}`;
-        globalGameState[
-            k + cards.length / 2
-        ] = `${ranks[indexRanks]}.${suits[indexSuits]}`;
-    }
-    console.log(globalGameState);
-    const cardsCont = document.querySelector(".cards");
-    const cardsItem = document.querySelectorAll(".card");
-    const cardsMix = {
-        tag: "div",
-        cls: "mix",
-    };
-    cardsCont.appendChild(templateEngine(cardsMix));
-    const mixCont = document.querySelector(".mix");
-    console.log(cardsItem.length);
-
-    for (let i = cardsItem.length; i > 0; i--) {
-        if (cardsItem[i - 3]) {
-            mixCont.appendChild(cardsItem[i - 3]);
-            console.log(i);
+            cards[
+                i
+            ].src = `static/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
+            cards[
+                i + cards.length / 2
+            ].src = `static/${ranks[indexRanks]}.${suits[indexSuits]}.png`;
+            k++;
+            globalGameState[
+                k + 0
+            ] = `${ranks[indexRanks]}.${suits[indexSuits]}`;
+            globalGameState[
+                k + cards.length / 2
+            ] = `${ranks[indexRanks]}.${suits[indexSuits]}`;
         }
-    }
+        console.log(globalGameState);
+        const cardsCont = document.querySelector(".cards");
+        const cardsItem = document.querySelectorAll(".card");
+        const cardsMix = {
+            tag: "div",
+            cls: "mix",
+        };
+        cardsCont.appendChild(templateEngine(cardsMix));
+        const mixCont = document.querySelector(".mix");
+        console.log(cardsItem.length);
 
-    const cardsContElements = cardsCont.querySelectorAll(".card");
-    for (let i = 0; i < cardsContElements.length; i++) {
-        mixCont.appendChild(cardsContElements[i]);
+        for (let i = cardsItem.length; i > 0; i--) {
+            if (cardsItem[i - 3]) {
+                mixCont.appendChild(cardsItem[i - 3]);
+                console.log(i);
+            }
+        }
+
+        const cardsContElements = cardsCont.querySelectorAll(".card");
+        for (let i = 0; i < cardsContElements.length; i++) {
+            mixCont.appendChild(cardsContElements[i]);
+        }
+        console.log(mixCont.children);
     }
-    console.log(mixCont.children);
 }
 
 function cardShow(event) {
     cardsCounter++;
     const covers = document.querySelectorAll(".cover");
     if (covers.length < 2) {
-        alert("Вы выиграли");
+        //alert("Вы выиграли");
+        winScreen();
     } else {
         console.log("works");
     }
@@ -178,7 +192,8 @@ function cardShow(event) {
         globalGameState.cardChosen = card.src;
     } else {
         if (globalGameState.cardChosen !== card.src) {
-            alert("Вы проиграли");
+            //alert("Вы проиграли");
+            loseScreen();
         } else {
             globalGameState.cardChosen = card.src;
             cardsCounter = 0;
@@ -226,6 +241,10 @@ function hideCards() {
                                 },
                             },
                         ],
+                    },
+                    {
+                        tag: "div",
+                        cls: "dot_white",
                     },
                     {
                         tag: "div",
@@ -284,6 +303,7 @@ function hideCards() {
         clearInterval(timerInterval);
     }
     start();
+    globalGameState.timer = timerInterval;
     const buttonStart = document.querySelector(".startButton");
     buttonStart.addEventListener("click", function () {
         location.reload();
@@ -291,8 +311,172 @@ function hideCards() {
     cardsCont.addEventListener("click", cardShow);
 }
 const hideCardsTimer = () => {
-    setTimeout(hideCards, 5000);
+    if (globalGameState.difficulty in levels) {
+        setTimeout(hideCards, 5000);
+    }
 };
+
+function loseScreen() {
+    let second = document.getElementById("sec");
+    let minute = document.getElementById("min");
+    document.body.style.position = "relative";
+    const losePopUpObject = {
+        tag: "div",
+        cls: "lose_container",
+        content: [
+            {
+                tag: "div",
+                cls: "lose_icon",
+                content: {
+                    tag: "img",
+                    cls: "lose_pic",
+                    attrs: {
+                        src: "static/lose.png",
+                    },
+                },
+            },
+            {
+                tag: "h3",
+                cls: "lose_title",
+                content: "Вы проиграли!",
+            },
+            {
+                tag: "p",
+                cls: "lose_text",
+                content: "Затраченное время:",
+            },
+            {
+                tag: "div",
+                cls: "time",
+                content: [
+                    {
+                        tag: "div",
+                        cls: "minute",
+                        content: minute.textContent,
+                    },
+                    {
+                        tag: "div",
+                        cls: "dot",
+                    },
+                    {
+                        tag: "div",
+                        cls: "second",
+                        content: second.textContent,
+                    },
+                ],
+            },
+            {
+                tag: "div",
+                cls: "play_again",
+                content: {
+                    tag: "button",
+                    cls: "play_again_button",
+                    content: "Играть снова",
+                },
+            },
+        ],
+    };
+    const coverObject = {
+        tag: "div",
+        cls: "lose_cover",
+    };
+    document.body.appendChild(templateEngine(coverObject));
+    const loseCover = document.querySelector(".lose_cover");
+    loseCover.appendChild(templateEngine(losePopUpObject));
+    console.log(globalGameState);
+
+    function clearTimer() {
+        clearInterval(globalGameState.timer);
+        console.log(globalGameState.timer);
+    }
+    clearTimer();
+
+    const playAgain = document.querySelector(".play_again");
+    playAgain.addEventListener("click", function () {
+        location.reload();
+    });
+}
+
+function winScreen() {
+    let second = document.getElementById("sec");
+    let minute = document.getElementById("min");
+    document.body.style.position = "relative";
+    const winPopUpObject = {
+        tag: "div",
+        cls: "win_container",
+        content: [
+            {
+                tag: "div",
+                cls: "win_icon",
+                content: {
+                    tag: "img",
+                    cls: "win_pic",
+                    attrs: {
+                        src: "static/win.png",
+                    },
+                },
+            },
+            {
+                tag: "h3",
+                cls: "win_title",
+                content: "Вы выиграли!",
+            },
+            {
+                tag: "p",
+                cls: "win_text",
+                content: "Затраченное время:",
+            },
+            {
+                tag: "div",
+                cls: "time",
+                content: [
+                    {
+                        tag: "div",
+                        cls: "minute",
+                        content: minute.textContent,
+                    },
+                    {
+                        tag: "div",
+                        cls: "dot",
+                    },
+                    {
+                        tag: "div",
+                        cls: "second",
+                        content: second.textContent,
+                    },
+                ],
+            },
+            {
+                tag: "div",
+                cls: "play_again",
+                content: {
+                    tag: "button",
+                    cls: "play_again_button",
+                    content: "Играть снова",
+                },
+            },
+        ],
+    };
+    const coverObject = {
+        tag: "div",
+        cls: "win_cover",
+    };
+    document.body.appendChild(templateEngine(coverObject));
+    const winCover = document.querySelector(".win_cover");
+    winCover.appendChild(templateEngine(winPopUpObject));
+    console.log(globalGameState);
+
+    function clearTimer() {
+        clearInterval(globalGameState.timer);
+        console.log(globalGameState.timer);
+    }
+    clearTimer();
+
+    const playAgain = document.querySelector(".play_again");
+    playAgain.addEventListener("click", function () {
+        location.reload();
+    });
+}
 
 levelsCont.addEventListener("click", chooseLevel);
 startButton.addEventListener("click", secondScreen);
