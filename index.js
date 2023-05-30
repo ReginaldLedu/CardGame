@@ -41,9 +41,8 @@ function chooseLevel(event) {
 
     let target = event.target;
     globalGameState.difficulty = target.className;
-    console.log(globalGameState.difficulty);
+
     target.classList.add("level__chosen");
-    console.log(target);
 }
 
 function templateEngine(block) {
@@ -91,7 +90,6 @@ function secondScreen() {
         let cardQuantity = 0;
         container.remove();
         if (globalGameState.difficulty in levels) {
-            console.log(globalGameState.difficulty);
             switch (globalGameState.difficulty) {
                 case "easy":
                     cardQuantity = levels.easy;
@@ -124,7 +122,6 @@ function renderCardsScreen() {
         let indexRanks = 10;
         let k = 0;
         let cards = document.querySelectorAll(".card__pic");
-        console.log(cards);
 
         for (let i = 0; i < cards.length / 2; i++) {
             do {
@@ -183,7 +180,7 @@ function cardShow(event) {
     } else {
         console.log("works");
     }
-    console.log(covers);
+
     let target = event.target;
     let card = target.previousElementSibling;
     card.classList.remove("hidden");
@@ -383,11 +380,9 @@ function loseScreen() {
     document.body.appendChild(templateEngine(coverObject));
     const loseCover = document.querySelector(".lose_cover");
     loseCover.appendChild(templateEngine(losePopUpObject));
-    console.log(globalGameState);
 
     function clearTimer() {
         clearInterval(globalGameState.timer);
-        console.log(globalGameState.timer);
     }
     clearTimer();
 
@@ -464,11 +459,9 @@ function winScreen() {
     document.body.appendChild(templateEngine(coverObject));
     const winCover = document.querySelector(".win_cover");
     winCover.appendChild(templateEngine(winPopUpObject));
-    console.log(globalGameState);
 
     function clearTimer() {
         clearInterval(globalGameState.timer);
-        console.log(globalGameState.timer);
     }
     clearTimer();
 
